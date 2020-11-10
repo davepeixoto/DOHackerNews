@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+
+    hackernews-redis:
+        image: davepeixoto/do-hackernews-redis:latest
+        container_name: do-hackernews-redis
+        command: redis-server --requirepass HackerNews_Redis_2@2@
+        build: 
+            context: ./
+            dockerfile: ./redis/Dockerfile 
+        restart: always 
+#        environment:
+#            - REDIS_REPLICATION_MODE=master
+        networks:
+            - hackernews-network
+
+    
+    hackernews-presentation:
+        image: davepeixoto/do-hackernews-presentation:latest
+        container_name: do-hackernews-presentation    
+        build: 
+            context: ../src
+            dockerfile: ./presentations/DOHackerNews.Presentation/Dockerfile 
+        restart: always   
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://*:5001
+        networks:
+            - hackernews-network
+        depends_on:
+            - hackernews-redis
+
+
+    hackernews-nginx:
+        image: davepeixoto/do-hackernews-nginx:latest
+        container_name: do-hackernews-nginx    
+        build: 
+            context: ./
+            dockerfile: ./nginx/Dockerfile 
+        restart: always 
+        ports:
+            - "80:80"
+        networks:
+            - hackernews-network
+        depends_on:
+            - hackernews-services
+
+
+networks:
+    hackernews-network:
+        driver: bridge
+ 
