@@ -19,10 +19,10 @@ namespace DOHackerNews.Test.UnitTests
                 commentCount: new int[] { 10, 50, 63 }
                 );
 
-            // Act
+            // Act - Assert
 
             Assert.Equal(Convert.ToDateTime("2020-11-07T16:25:47.0000000Z").ToUniversalTime(), bestStoriesDetail.Time);
-            // Assert
+           
 
         }
     }

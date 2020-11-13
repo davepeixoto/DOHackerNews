@@ -26,6 +26,22 @@ namespace DOHackerNews.WebAPI.Core.Services
             return JsonSerializer.Deserialize<T>(await responseMessage.Content.ReadAsStringAsync(), options);
         }
 
+
+        protected T DeserializeObjectResponse<T>(string content)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            };
+
+
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(content);
+
+
+
+            //return JsonSerializer.Deserialize<T>(content, options);
+        }
+
         protected bool ErrorHandlerResponse(HttpResponseMessage response)
         {
             if (response.StatusCode == HttpStatusCode.BadRequest) return false;
@@ -34,6 +50,6 @@ namespace DOHackerNews.WebAPI.Core.Services
             return true;
         }
 
-       
+
     }
 }

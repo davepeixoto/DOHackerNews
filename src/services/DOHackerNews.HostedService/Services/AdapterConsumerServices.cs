@@ -1,4 +1,4 @@
-﻿using DOHackerNews.Core.DomainObjects;
+﻿using DOHackerNews.HostedService.DTO;
 using DOHackerNews.HostedService.Extensions;
 using DOHackerNews.WebAPI.Core.Services;
 using Microsoft.Extensions.Options;
@@ -13,20 +13,16 @@ namespace DOHackerNews.HostedService.Services
     public class AdapterConsumerServices : BaseServices, IAdapterConsumerServices
     {
         private readonly HttpClient _httpClient;
-        private readonly string BestStoriesIds;
-        private readonly string BestStorieDetail;
 
         public AdapterConsumerServices(HttpClient httpClient, IOptions<AppSettings> settings)
         {
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri(settings.Value.HackerNewsUrl);
-            BestStoriesIds = settings.Value.BestStoriesIds;
-            BestStorieDetail = settings.Value.BestStorieDetail;
+            _httpClient.BaseAddress = new Uri(settings.Value.AdapterApiUrl??"#");
         }
 
         public async Task<IEnumerable<int>> GetBestStories()
         {
-            var response = await _httpClient.GetAsync(BestStoriesIds);
+            var response = await _httpClient.GetAsync("");
 
             ErrorHandlerResponse(response);
 
@@ -34,14 +30,13 @@ namespace DOHackerNews.HostedService.Services
 
         }
 
-        public async Task<string> GetBestStoriesDetail(int storieId)
+        public async Task<BestStorieDetailInputDTO> GetBestStoriesDetail(int storieId)
         {
-            var response = await _httpClient.GetAsync(BestStorieDetail.Replace("{idStorie}", storieId.ToString()));
+            var response = await _httpClient.GetAsync($"/api/{storieId}");
             ErrorHandlerResponse(response);
 
-//            var hackerNewDetailDto = await DeserializeObjectResponse<HackerNewDetailDto>(response);
 
-            return "";
+            return await DeserializeObjectResponse<BestStorieDetailInputDTO>(response);
         }
 
 

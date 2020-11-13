@@ -1,5 +1,6 @@
 ﻿using DOHackerNews.Core.DomainObjects;
 using DOHackerNews.Presentation.Data;
+using DOHackerNews.Presentation.Services;
 using DOHackerNews.WebAPI.Core.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ namespace DOHackerNews.Presentation.Controllers
 {
     public class HackerNewsController : MainController
     {
-        private readonly IBestStoriesDetailsRepository _bestStoriesDetailsRepository;
+        private readonly IGetStoriesDetailsSerices _getStoriesDetailsSerices;
 
-        public HackerNewsController(IBestStoriesDetailsRepository bestStoriesDetailsRepository)
+        public HackerNewsController(IGetStoriesDetailsSerices getStoriesDetailsSerices)
         {
-            _bestStoriesDetailsRepository = bestStoriesDetailsRepository;
+            _getStoriesDetailsSerices = getStoriesDetailsSerices;
         }
 
 
@@ -26,7 +27,8 @@ namespace DOHackerNews.Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBestStories()
         {
-            return CustomResponse(await _bestStoriesDetailsRepository.GetBestStoriesDetails());
+
+            return CustomResponse(await _getStoriesDetailsSerices.Execute());
         }
     }
 }

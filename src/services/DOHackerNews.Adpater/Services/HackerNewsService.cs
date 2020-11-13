@@ -5,11 +5,7 @@ using DOHackerNews.WebAPI.Core.Services;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DOHackerNews.Adpater.Services
@@ -36,7 +32,7 @@ namespace DOHackerNews.Adpater.Services
             ErrorHandlerResponse(response);
 
             return await DeserializeObjectResponse<IEnumerable<int>>(response);
-          
+
         }
 
         public async Task<BestStoriesDetail> GetBestStoriesDetail(int storieId)
@@ -44,13 +40,13 @@ namespace DOHackerNews.Adpater.Services
             var response = await _httpClient.GetAsync(BestStorieDetail.Replace("{idStorie}", storieId.ToString()));
             ErrorHandlerResponse(response);
 
-           var hackerNewDetailDto = await DeserializeObjectResponse<HackerNewDetailDto>(response);
+            var hackerNewDetailDto = await DeserializeObjectResponse<HackerNewDetailInputDTO>(response);
 
             return Mapper_HackerNewDetailDto_to_BestStoriesDetail(hackerNewDetailDto);
         }
 
 
-        private BestStoriesDetail Mapper_HackerNewDetailDto_to_BestStoriesDetail(HackerNewDetailDto hackerNewDetailDto)
+        private BestStoriesDetail Mapper_HackerNewDetailDto_to_BestStoriesDetail(HackerNewDetailInputDTO hackerNewDetailDto)
         {
             return new BestStoriesDetail(
                 time: hackerNewDetailDto.Time,
@@ -63,6 +59,6 @@ namespace DOHackerNews.Adpater.Services
         }
 
     }
-  
+
 
 }

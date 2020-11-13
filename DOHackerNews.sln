@@ -13,25 +13,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{70627E51-BADD-44AB-9CBB-16DE1982A665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOHackerNews.Core", "src\buildingBlocks\core\DOHackerNews.Core\DOHackerNews.Core.csproj", "{652504F8-794F-4ACF-ADA9-10A2D6777B61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOHackerNews.Core", "src\buildingBlocks\core\DOHackerNews.Core\DOHackerNews.Core.csproj", "{652504F8-794F-4ACF-ADA9-10A2D6777B61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8B610FFD-B027-436B-B84D-088CFD1C192E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOHackerNews.WebAPI.Core", "src\buildingBlocks\services\DOHackerNews.WebAPI.Core\DOHackerNews.WebAPI.Core.csproj", "{E7F6EA34-1B53-4FA0-9294-72CF6272A01F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOHackerNews.WebAPI.Core", "src\buildingBlocks\services\DOHackerNews.WebAPI.Core\DOHackerNews.WebAPI.Core.csproj", "{E7F6EA34-1B53-4FA0-9294-72CF6272A01F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapter", "Adapter", "{4386951C-8A55-48CA-8C43-E2C074C8A153}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOHackerNews.Adpater", "src\services\DOHackerNews.Adpater\DOHackerNews.Adpater.csproj", "{53974ED8-3628-4844-8DDE-7A12D1006401}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOHackerNews.Adpater", "src\services\DOHackerNews.Adpater\DOHackerNews.Adpater.csproj", "{53974ED8-3628-4844-8DDE-7A12D1006401}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{B87CE8CF-830B-46A7-89FB-EEDF92A4202C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOHackerNews.Presentation", "src\presentations\DOHackerNews.Presentation\DOHackerNews.Presentation.csproj", "{F40EF740-6A7C-4378-90BE-19998E46F96F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOHackerNews.Presentation", "src\presentations\DOHackerNews.Presentation\DOHackerNews.Presentation.csproj", "{F40EF740-6A7C-4378-90BE-19998E46F96F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOHackerNews.Test.UnitTests", "test\DOHackerNews.Test.UnitTests\DOHackerNews.Test.UnitTests.csproj", "{0D831A04-F267-4CB9-BD8D-47F7AF7BBD44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOHackerNews.Test.UnitTests", "test\DOHackerNews.Test.UnitTests\DOHackerNews.Test.UnitTests.csproj", "{0D831A04-F267-4CB9-BD8D-47F7AF7BBD44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HostedServices", "HostedServices", "{1E171940-AFDA-4918-9582-9BA2DB2DB8D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOHackerNews.HostedService", "src\services\DOHackerNews.HostedService\DOHackerNews.HostedService.csproj", "{6DADED1A-4F3D-4306-B7B9-C041FDD9F4B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOHackerNews.HostedService", "src\services\DOHackerNews.HostedService\DOHackerNews.HostedService.csproj", "{6DADED1A-4F3D-4306-B7B9-C041FDD9F4B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

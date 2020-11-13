@@ -10,12 +10,45 @@ services:
             context: ./
             dockerfile: ./redis/Dockerfile 
         restart: always 
-#        environment:
-#            - REDIS_REPLICATION_MODE=master
+        environment:
+            - REDIS_REPLICATION_MODE=master
         networks:
             - hackernews-network
 
+
+    hackernews-adapter:
+        image: davepeixoto/do-hackernews-adapter:latest
+        container_name: do-hackernews-adapter    
+        build: 
+            context: ../src
+            dockerfile: ./services/DOHackerNews.Adpater/Dockerfile 
+        restart: always   
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://*:5101
+        networks:
+            - hackernews-network
+        depends_on:
+            - hackernews-redis
+
+
+    hackernews-hosted-service:
+        image: davepeixoto/do-hackernews-hosted-service:latest
+        container_name: do-hackernews-hosted-service    
+        build: 
+            context: ../src
+            dockerfile: ./services/DOHackerNews.HostedService/Dockerfile 
+        restart: always   
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://*:5201
+        networks:
+            - hackernews-network
+        depends_on:
+            - hackernews-adapter            
+
     
+
     hackernews-presentation:
         image: davepeixoto/do-hackernews-presentation:latest
         container_name: do-hackernews-presentation    
@@ -32,6 +65,7 @@ services:
             - hackernews-redis
 
 
+
     hackernews-nginx:
         image: davepeixoto/do-hackernews-nginx:latest
         container_name: do-hackernews-nginx    
@@ -44,7 +78,7 @@ services:
         networks:
             - hackernews-network
         depends_on:
-            - hackernews-services
+            - hackernews-presentation
 
 
 networks:

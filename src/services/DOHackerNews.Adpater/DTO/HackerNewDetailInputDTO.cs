@@ -2,7 +2,7 @@
 
 namespace DOHackerNews.Adpater.DTO
 {
-    public class HackerNewDetailDto
+    public class HackerNewDetailInputDTO
     {
         public int Id { get; set; }
         public bool Deleted { get; set; }

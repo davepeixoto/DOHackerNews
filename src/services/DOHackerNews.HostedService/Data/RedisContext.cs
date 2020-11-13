@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
 
-namespace DOHackerNews.Presentation.Data
+namespace DOHackerNews.HostedService.Data
 {
     public interface IRedisConnection
     {

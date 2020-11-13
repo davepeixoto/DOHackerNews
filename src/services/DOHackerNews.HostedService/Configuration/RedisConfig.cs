@@ -1,8 +1,7 @@
-﻿using DOHackerNews.Core.Constants;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DOHackerNews.Presentation.Configuration
+namespace DOHackerNews.HostedService.Configuration
 {
     public static class RedisConfig
     {
@@ -12,7 +11,7 @@ namespace DOHackerNews.Presentation.Configuration
             {
                 options.Configuration =
                     configuration.GetConnectionString("ConexaoRedis");
-                options.InstanceName = BestStoriesDetailsConstant.NoSqlInstance;
+                options.InstanceName = "API-Best-Stories";
             });
         }
     }

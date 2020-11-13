@@ -15,36 +15,9 @@ namespace DOHackerNews.HostedService.Configuration
 
             services.Configure<AppSettings>(configuration);
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Total",
-                    builder =>
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader());
-            });
+            
         }
 
-        public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            app.UseForwardedHeaders();
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseCors("Total");
-
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
+        public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env){}
     }
 }

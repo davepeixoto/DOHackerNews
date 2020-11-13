@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace DOHackerNews.WebAPI.Core.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public abstract class MainController : ControllerBase
     {

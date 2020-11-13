@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["./services/DOHackerNews.Adpater/DOHackerNews.Adpater.csproj", "services/DOHackerNews.Adpater/"]
 COPY ["./buildingBlocks/core/DOHackerNews.Core/DOHackerNews.Core.csproj", "buildingBlocks/core/DOHackerNews.Core/"]
 COPY ["./buildingBlocks/services/DOHackerNews.WebAPI.Core/DOHackerNews.WebAPI.Core.csproj", "buildingBlocks/services/DOHackerNews.WebAPI.Core/"]
-RUN dotnet restore "src/services/DOHackerNews.Adpater/DOHackerNews.Adpater.csproj"
+RUN dotnet restore "services/DOHackerNews.Adpater/DOHackerNews.Adpater.csproj"
 COPY . .
 WORKDIR "services/DOHackerNews.Adpater"
 RUN dotnet build "DOHackerNews.Adpater.csproj" -c Release -o /app/build
